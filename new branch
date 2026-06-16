@@ -1,4 +1,14 @@
+# Use a lightweight OpenJDK runtime image
+FROM eclipse-temurin:17-jre-alpine
 
-abcdef
-qwerty
-zxcv
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the built JAR file from the Jenkins build target folder
+COPY target/*.jar app.jar
+
+# Expose the port your Java app runs on (e.g., 8080)
+EXPOSE 83:80
+
+# Run the application
+ENTRYPOINT ["java", "-jar", "app.jar"]
