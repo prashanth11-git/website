@@ -12,3 +12,16 @@ EXPOSE 83:80
 
 # Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
+
+
+# Step 1: Use the official Nginx lightweight image
+FROM nginx:alpine
+
+# Step 2: (Optional) Copy your custom Nginx configuration if you have one
+# COPY nginx.conf /etc/nginx/nginx.conf
+
+# Step 3: Copy your Java application's static files or frontend build if applicable
+# COPY ./dist /usr/share/nginx/html
+
+# Step 4: Document that this container intends to use port 83
+EXPOSE 83
